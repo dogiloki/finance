@@ -32,7 +32,7 @@
 			<input type="number" name="day_maturity" id="day_maturity" required>
 		</label>
 		<label>
-			<span>Tipo de prestamo</span>
+			<span>Tipo de pago</span>
 			<select name="id_loan_type" required>
 				@foreach($loan_types as $loan_type)
 					<option value="{{$loan_type->id}}" title="{{$loan_type->description}}">{{$loan_type->name}}</option>
