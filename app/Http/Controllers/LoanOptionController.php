@@ -10,10 +10,9 @@ use App\Models\LoanOption;
 class LoanOptionController extends Controller{
 
     public function index(){
-        $interest=$loan_option->interest;
         $payment_frequencies=PaymentFrequency::all();
         $loan_types=LoanType::all();
-        return view('loan_option.index',compact('interest','payment_frequencies','loan_types'));
+        return view('loan_option.index',compact('payment_frequencies','loan_types'));
     }
 
     public function loan_calcule(Request $request){

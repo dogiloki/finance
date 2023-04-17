@@ -32,10 +32,6 @@
 			<input type="number" name="day_maturity" id="day_maturity" required>
 		</label>
 		<label>
-			<span>Tasa de interés</span>
-			<input type="number" name="interest" value="{{$interest}}" readonly required>
-		</label>
-		<label>
 			<span>Tipo de prestamo</span>
 			<select name="id_loan_type" required>
 				@foreach($loan_types as $loan_type)
