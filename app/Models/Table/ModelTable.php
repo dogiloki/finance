@@ -40,20 +40,21 @@ class ModelTable{
         return $this->rows[$index]??[];
     }
 
-    public function addRow(array $row): void{
+    public function addRow(array $row, array $rows_format=null): void{
         $row_new=[];
+        $row_format_new=[];
         foreach($this->columns as $key=>$value){
             $row_new[$key]=$row[$key]??null;
+            $row_format_new[$key]=$rows_format[$key]??$row_new[$key];
         }
         $this->rows[]=$row_new;
+        $this->rows_format[]=$row_format_new;
     }
 
     public function removeRow(int $index): void{
         unset($this->rows[$index]);
         unset($this->rows_format[$index]);
     }
-
-    // Filas con formato
 
     public function getRowsFormat(): array{
         return $this->rows_format;
@@ -63,14 +64,6 @@ class ModelTable{
         return $this->rows_format[$index]??[];
     }
 
-    public function addRowFormat(array $row): void{
-        $row_new=[];
-        foreach($this->columns as $key=>$value){
-            $row_new[$key]=$row[$key]??null;
-        }
-        $this->rows_format[]=$row_new;
-    }
-
     // Obterner valores
 
     public function getValueAt(int $row, string|int $column){
@@ -78,7 +71,7 @@ class ModelTable{
     }
 
     public function getValueFormatAt(int $row, string|int $column){
-        return $this->getRowFormat[$row][$column]??null;
+        return $this->rows_format[$row][$column]??null;
     }
 
     public function setValueAt(int $row, string|int $column, $value): void{

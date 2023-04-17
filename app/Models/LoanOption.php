@@ -12,6 +12,8 @@ use App\Models\Table\ModelTable;
 class LoanOption extends Model{
     use HasFactory, AutoFillable;
 
+    protected $table='loan_option';
+
     public $interest=24;
     public $interest_vat=24;
     public $commission=0.05;
@@ -28,7 +30,13 @@ class LoanOption extends Model{
         return $this->commission/100;
     }
 
-    protected $table='loan_option';
+    public function paymentFrequency(){
+        return $this->belongsTo(PaymentFrequency::class,'id_payment_frequency');
+    }
+
+    public function loanType(){
+        return $this->belongsTo(LoanType::class,'id_loan_type');
+    }
 
     public function calculateTable(): ModelTable{
         $table=new ModelTable();
@@ -69,10 +77,8 @@ class LoanOption extends Model{
             $row_format['interest']="$ ".number_format($row['interest'],2);
             $row_format['vat']="$ ".number_format($row['vat'],2);
             $row_format['total_payment']="$ ".number_format($row['total_payment'],2);
-            $row_format=array_merge($row,$row_format);
 
-            $table->addRow($row);
-            $table->addRowFormat($row_format);
+            $table->addRow($row,$row_format);
         }
         return $table;
     }

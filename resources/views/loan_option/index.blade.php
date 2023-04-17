@@ -50,6 +50,39 @@
 		<input type="submit" value="Calcular">
 	</form>
 	@if(isset($table))
+
+		<h2>Resumen</h2>
+		<table>
+			<tr>
+				<th>Importe financiero</th>
+				<td>{{$table->getValueFormatAt(0,'balance')}}</td>
+			</tr>
+			<tr>
+				<th>Periodicidad del pago</th>
+				<td>{{$loan_option->paymentFrequency->name}}</td>
+			</tr>
+			<tr>
+				<th>Plazo</th>
+				<td>{{$loan_option->term}}</td>
+			</tr>
+			<tr>
+				<th>Vencimiento en día específico</th>
+				<td>{{$loan_option->day_maturity}}</td>
+			</tr>
+			<tr>
+				<th>Tasa de interés</th>
+				<td>{{$loan_option->interest}} %</td>
+			</tr>
+			<tr>
+				<th>Tipo</th>
+				<td>{{$loan_option->loanType->name}}</td>
+			</tr>
+			<tr>
+				<th>Fecha de operación</th>
+				<td>{{$loan_option->transaction_at}}</td>
+			</tr>
+		</table>
+
 		<h2>Tabla de pagos</h2>
 		<table>
 			<thead>
