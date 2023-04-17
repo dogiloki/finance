@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoanOptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[LoanOptionController::class,'index'])->name('loan_option.index');
+Route::post('/loan_calcule',[LoanOptionController::class,'loan_calcule'])->name('loan_calcule');
