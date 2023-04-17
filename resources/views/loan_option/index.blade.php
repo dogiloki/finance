@@ -60,7 +60,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($table->getRows() as $row)
+				@foreach($table->getRowsFormat() as $row)
 					<tr>
 						@foreach($row as $column)
 							<td>{{$column}}</td>

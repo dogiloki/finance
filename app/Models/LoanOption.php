@@ -61,7 +61,18 @@ class LoanOption extends Model{
             $row['interest']=$index==0?0:$row_prev['balance']*($interest_rate/360)*$intervale_payment->days;
             $row['vat']=$index==0?$row['commission']*$interest_rate_vat:$row['interest']*$interest_rate_vat;
             $row['total_payment']=$row['commission']+$row['amortization']+$row['interest']+($index==0?$row['vat']:0);
+
+            // Establecer formato de filas
+            $row_format['balance']="$ ".number_format($row['balance'],2);
+            $row_format['commission']="$ ".number_format($row['commission'],2);
+            $row_format['amortization']="$ ".number_format($row['amortization'],2);
+            $row_format['interest']="$ ".number_format($row['interest'],2);
+            $row_format['vat']="$ ".number_format($row['vat'],2);
+            $row_format['total_payment']="$ ".number_format($row['total_payment'],2);
+            $row_format=array_merge($row,$row_format);
+
             $table->addRow($row);
+            $table->addRowFormat($row_format);
         }
         return $table;
     }
