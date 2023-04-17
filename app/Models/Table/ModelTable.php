@@ -74,11 +74,11 @@ class ModelTable{
     // Obterner valores
 
     public function getValueAt(int $row, string|int $column){
-        return $this->rows[$row][$column]??'';
+        return $this->rows[$row][$column]??null;
     }
 
     public function getValueFormatAt(int $row, string|int $column){
-        return $this->getRowFormat[$row][$column]??'';
+        return $this->getRowFormat[$row][$column]??null;
     }
 
     public function setValueAt(int $row, string|int $column, $value): void{
