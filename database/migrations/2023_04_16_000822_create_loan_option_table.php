@@ -19,7 +19,9 @@ return new class extends Migration
             $table->decimal('amount',10,2);
             $table->integer('term');
             $table->integer('day_maturity')->nullable();
-            $table->decimal('interest_rate',5,2)->default(0);
+            $table->decimal('interest',5,2)->default(0);
+            $table->decimal('interest_vat',5,2)->default(0);
+            $table->decimal('commission',5,2)->default(0);
             $table->date('transaction_at');
             $table->timestamps();
             $table->foreign('id_loan_type')->references('id')->on('loan_type');

@@ -74,6 +74,14 @@
 				<td>{{$loan_option->loanType->name}}</td>
 			</tr>
 			<tr>
+				<th align="left">Comisión</th>
+				<td>{{$loan_option->commission}} %</td>
+			</tr>
+			<tr>
+				<th align="left">IVA sobre interés</th>
+				<td>{{$loan_option->interest_vat}} %</td>
+			</tr>
+			<tr>
 				<th align="left">Fecha de operación</th>
 				<td>{{$loan_option->transaction_at}}</td>
 			</tr>

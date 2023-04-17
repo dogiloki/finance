@@ -15,7 +15,7 @@ class LoanOption extends Model{
     protected $table='loan_option';
 
     public $interest=24;
-    public $interest_vat=24;
+    public $interest_vat=16;
     public $commission=0.05;
 
     public function interestRate(): float{
