@@ -93,6 +93,38 @@
 			</tr>
 		</table>
 
+		<h3>Totales</h3>
+
+		<table>
+			<tr>
+				<th align="left">Amortización</th>
+				<td>{{$table->totals['amortization']}}</td>
+			</tr>
+			<tr>
+				<th align="left">Intereses</th>
+				<td>{{$table->totals['interest']}}</td>
+			</tr>
+			<tr>
+				<th align="left">IVA</th>
+				<td>{{$table->totals['vat']}}</td>
+			</tr>
+			@if(isset($table->totals['delinquent']))
+				<tr>
+					<th align="left">Moratarios</th>
+					<td>{{$table->totals['delinquent']}}</td>
+				</tr>
+				<tr>
+					<th align="left">Flujo</th>
+					<td>{{$table->totals['total_payment']}}</td>
+				</tr>
+			@else
+				<tr>
+					<th align="left">Pago total</th>
+					<td>{{$table->totals['total_payment']}}</td>
+				</tr>
+			@endif
+		</table>
+
 		<h2>Tabla de pagos</h2>
 		<table>
 			<thead>

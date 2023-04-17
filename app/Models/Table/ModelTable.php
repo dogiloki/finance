@@ -30,6 +30,10 @@ class ModelTable{
         unset($this->columns[$column]);
     }
 
+    public function countColumns(): int{
+        return count($this->columns);
+    }
+
     // Filas
 
     public function getRows(): array{
@@ -56,12 +60,20 @@ class ModelTable{
         unset($this->rows_format[$index]);
     }
 
+    public function countRows(): int{
+        return count($this->rows);
+    }
+
     public function getRowsFormat(): array{
         return $this->rows_format;
     }
 
     public function getRowFormat(int $index): array{
         return $this->rows_format[$index]??[];
+    }
+
+    public function countRowsFormat(): int{
+        return count($this->rows_format);
     }
 
     // Obterner valores
@@ -80,6 +92,62 @@ class ModelTable{
 
     public function setValueFormatAt(int $row, string|int $column, $value): void{
         $this->rows_format[$row][$column]=$value;
+    }
+
+    // Otras fucnionalidades
+
+    public function isEmpty(): bool{
+        return $this->countRows()==0;
+    }
+
+    public function clear(): void{
+        $this->columns=[];
+        $this->rows=[];
+        $this->rows_format=[];
+    }
+
+    public function toArray(): array{
+        return [
+            'columns'=>$this->columns,
+            'rows'=>$this->rows,
+            'rows_format'=>$this->rows_format
+        ];
+    }
+
+    // public function operation(string|int $column, string $operator): float{
+    //     $result=0;
+    //     foreach($this->rows as $row){
+    //         if(is_numeric($row[$column])){
+    //             $result=floatval(eval("return ".$result.$operator.$row[$column].";"));
+    //         }
+    //     }
+    //     return $result;
+    // }
+
+    public function promedio(string|int $column): float{
+        $suma=0;
+        foreach($this->rows as $row){
+            $suma+=$row[$column];
+        }
+        return $suma/$this->countRows();
+    }
+
+    public function getTotals($action=null): array{
+        $totals=[];
+        foreach($this->columns as $column_key=>$column_value){
+            $totals[$column_key]=0;
+            foreach($this->rows as $row_key=>$row_value){
+                if(!is_numeric($row_value[$column_key])){
+                    $totals[$column_key]=null;
+                    continue 2;
+                }
+                $totals[$column_key]=floatval($totals[$column_key])+$row_value[$column_key];
+            }
+            if($action instanceof \Closure){
+                $totals[$column_key]=$action($totals[$column_key]);
+            }
+        }
+        return $totals;
     }
 
 }

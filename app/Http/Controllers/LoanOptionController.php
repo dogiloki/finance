@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\Models\PaymentFrequency;
 use App\Models\LoanType;
 use App\Models\LoanOption;
@@ -45,7 +46,7 @@ class LoanOptionController extends Controller{
 
     private function loadViewTable(LoanOption $loan_option, ModelTable $table){
         $payment_frequencies=PaymentFrequency::all();
-        $loan_types=LoanType::typeLoan();
+        $loan_types=Route::is('loan_calcule')?LoanType::typeLoan():LoanType::typeCredit();
         return view('loan_option.index',compact('loan_option','payment_frequencies','loan_types','table'));
     }
     

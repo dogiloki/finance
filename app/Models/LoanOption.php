@@ -86,6 +86,10 @@ class LoanOption extends Model{
 
             $table->addRow($row,$row_format);
         }
+        $table->totals=$table->getTotals(function($item){
+            // Establecer formato de totales
+            return "$ ".number_format($item,2);
+        });
         return $table;
     }
 
@@ -162,6 +166,10 @@ class LoanOption extends Model{
 
             $table->addRow($row,$row_format);
         }
+        $table->totals=$table->getTotals(function($item){
+            // Establecer formato de totales
+            return "$ ".number_format($item,2);
+        });
         return $table;
     }
 
