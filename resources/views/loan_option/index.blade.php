@@ -54,31 +54,31 @@
 		<h2>Resumen</h2>
 		<table>
 			<tr>
-				<th>Importe financiero</th>
+				<th align="left">Importe financiero</th>
 				<td>{{$table->getValueFormatAt(0,'balance')}}</td>
 			</tr>
 			<tr>
-				<th>Periodicidad del pago</th>
+				<th align="left">Periodicidad del pago</th>
 				<td>{{$loan_option->paymentFrequency->name}}</td>
 			</tr>
 			<tr>
-				<th>Plazo</th>
+				<th align="left">Plazo</th>
 				<td>{{$loan_option->term}}</td>
 			</tr>
 			<tr>
-				<th>Vencimiento en día específico</th>
+				<th align="left">Vencimiento en día específico</th>
 				<td>{{$loan_option->day_maturity}}</td>
 			</tr>
 			<tr>
-				<th>Tasa de interés</th>
+				<th align="left">Tasa de interés</th>
 				<td>{{$loan_option->interest}} %</td>
 			</tr>
 			<tr>
-				<th>Tipo</th>
+				<th align="left">Tipo</th>
 				<td>{{$loan_option->loanType->name}}</td>
 			</tr>
 			<tr>
-				<th>Fecha de operación</th>
+				<th align="left">Fecha de operación</th>
 				<td>{{$loan_option->transaction_at}}</td>
 			</tr>
 		</table>
