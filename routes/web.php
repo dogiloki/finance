@@ -16,3 +16,4 @@ use App\Http\Controllers\LoanOptionController;
 
 Route::get('/',[LoanOptionController::class,'index'])->name('loan_option.index');
 Route::post('/loan_calcule',[LoanOptionController::class,'loan_calcule'])->name('loan_calcule');
+Route::post('/credit_calcule',[LoanOptionController::class,'credit_calcule'])->name('credit_calcule');

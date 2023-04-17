@@ -3,13 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Prestamos</title>
+	<title>Amortizaciones</title>
 </head>
 <body>
 
-	<h1>Calculadora de prestamos</h1>
+	<h1>Calculadora de Amortizaciones</h1>
 
-	<form action="{{route('loan_calcule')}}" method="POST">
+	<form action="{{route('credit_calcule')}}" method="POST">
 		@csrf
 		<label>
 			<span>Monto</span>
@@ -106,6 +106,7 @@
 				@endforeach
 			</tbody>
 		</table>
+		
 	@endif
 
 </body>
