@@ -16,6 +16,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('id_loan_type')->unsigned();
             $table->bigInteger('id_payment_frequency')->unsigned();
+            $table->bigInteger('id_business')->unsigned();
+            $table->bigInteger('id_contract')->unsigned();
             $table->decimal('amount',10,2);
             $table->integer('term');
             $table->integer('day_maturity')->nullable();
@@ -26,6 +28,8 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('id_loan_type')->references('id')->on('loan_type');
             $table->foreign('id_payment_frequency')->references('id')->on('payment_frequency');
+            $table->foreign('id_business')->references('id')->on('business');
+            $table->foreign('id_contract')->references('id')->on('contract');
         });
     }
 

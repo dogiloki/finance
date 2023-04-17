@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\AutoFillable;
 use App\Models\LoanType;
 use App\Models\PaymentFrequency;
+use App\Models\Table\Business;
+use App\Models\Table\Contract;
 use App\Models\Table\ModelTable;
 
 class LoanOption extends Model{
@@ -36,6 +38,14 @@ class LoanOption extends Model{
 
     public function loanType(){
         return $this->belongsTo(LoanType::class,'id_loan_type');
+    }
+
+    public function business(){
+        return $this->belongsTo(Business::class,'id_business');
+    }
+
+    public function contract(){
+        return $this->belongsTo(Contract::class,'id_contract');
     }
 
     public function calculateTable(): ModelTable{
