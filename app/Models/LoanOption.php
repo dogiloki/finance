@@ -72,7 +72,7 @@ class LoanOption extends Model{
             $date1=new \DateTime($row_prev['date']??null);
             $date2=new \DateTime($row['date']??null);
             $intervale_payment=$date1->diff($date2);
-            $row['interest']=$index==0?0:$row_prev['balance']*($interest_rate/360)*$row['days'];
+            $row['interest']=$index==0?0:$row_prev['balance']*($interest_rate/360)*$intervale_payment->days;
             $row['vat']=$index==0?$row['commission']*$interest_rate_vat:$row['interest']*$interest_rate_vat;
             $row['total_payment']=$row['commission']+$row['amortization']+$row['interest']+($index==0?$row['vat']:0);
 

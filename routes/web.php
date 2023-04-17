@@ -14,6 +14,11 @@ use App\Http\Controllers\LoanOptionController;
 |
 */
 
-Route::get('/',[LoanOptionController::class,'index'])->name('loan_option.index');
-Route::post('/loan_calcule',[LoanOptionController::class,'loan_calcule'])->name('loan_calcule');
-Route::post('/credit_calcule',[LoanOptionController::class,'credit_calcule'])->name('credit_calcule');
+Route::get('/',function(){
+    return redirect()->route('loan.form');
+});
+
+Route::get('/loan',[LoanOptionController::class,'loan'])->name('loan.form');
+Route::get('/credit',[LoanOptionController::class,'credit'])->name('credit.form');
+Route::post('/calcule/loan',[LoanOptionController::class,'loan_calcule'])->name('loan_calcule');
+Route::post('/calcule/credit',[LoanOptionController::class,'credit_calcule'])->name('credit_calcule');

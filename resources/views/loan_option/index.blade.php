@@ -8,8 +8,14 @@
 <body>
 
 	<h1>Calculadora de Amortizaciones</h1>
+	<a href="{{route('loan.form')}}">Préstamos</a>
+	<a href="{{route('credit.form')}}">Créditos</a>
 
-	<form action="{{route('credit_calcule')}}" method="POST">
+	@if(Route::is('credit.form'))
+		<form action="{{route('credit_calcule')}}" method="POST">
+	@else
+		<form action="{{route('loan_calcule')}}" method="POST">
+	@endif
 		@csrf
 		<label>
 			<span>Monto</span>
